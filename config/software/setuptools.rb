@@ -34,6 +34,9 @@ relative_path "setuptools-#{version}"
 build do
   env = with_standard_compiler_flags(with_embedded_path)
 
+  command "#{install_dir}/embedded/bin/python bootstrap.py" \
+          " --prefix=#{install_dir}/embedded", env: env
+
   command "#{install_dir}/embedded/bin/python setup.py install" \
           " --prefix=#{install_dir}/embedded", env: env
 end
